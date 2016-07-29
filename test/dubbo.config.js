@@ -1,8 +1,4 @@
 module.exports = {
-
-    /**
-     *
-     */
     application: {
         'application': 'dubbo_node_client',
         'application.version': '1.0',
@@ -12,20 +8,13 @@ module.exports = {
         'pid': process.pid,
         'version': '1.0'
     },
-
-
-    /**
-     * 注册中心
-     */
-    registry: '172.19.65.33:2181',
-
-    /**
-     * 负载均衡规则, 目前只有轮询
-     */
-    loadbalance: '',
-
-    /**
-     * 懒加载, 用于开发阶段, 快速启动
-     */
-    lazy: true
+    // dubbo: {
+    //     providerTimeout: 3,
+    //     weight: 1
+    // },
+    registry: '192.168.0.102:2181',
+    // registryTimeout: 30000,
+    // registryDelay: 1000,
+    // registryRetry: 0,
+    loadbalance: 'random'
 };

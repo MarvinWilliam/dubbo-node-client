@@ -1,23 +1,25 @@
-var _ = require('underscore'),
-    dubboClient = require('../index');
+var dubboClient = require('../index');
 
 //加载配置文件
 dubboClient.config(require('./dubbo.config.js'));
 
 ////获取serivce
-var catQueryProvider = dubboClient.getService('com.qianmi.pc.api.cat.StandardCatQueryProvider', '1.2.3');
+var catQueryProvider = dubboClient.getService('com.weidian.service.UserService', '1.0.0', 'dapengniao');
 
-//setTimeout(function(){
-//    for(var k in catQueryProvider){
-//        console.info(k);
-//    }
-//}, 1000)
+catQueryProvider.call('find', 'dapengniao')
+                .then(function (r) {
+                    console.info(r);
+                })
+                .catch(function (e) {
+                    console.error(e);
+                });
 
-catQueryProvider.call('listByParentId', 111)
-    .then(function (r) {
-        console.info(r);
-    })
-    .catch(function (e) {
-        console.error(JSON.stringify(e));
-    });
-
+setTimeout(function () {
+    catQueryProvider.call('find', 'dapengniao')
+                    .then(function (r) {
+                        console.info(r);
+                    })
+                    .catch(function (e) {
+                        console.error(e);
+                    });
+}, 3000);
