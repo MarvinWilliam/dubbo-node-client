@@ -13,13 +13,3 @@ catQueryProvider.call('find', 'dapengniao')
                 .catch(function (e) {
                     console.error(e);
                 });
-
-setTimeout(function () {
-    catQueryProvider.call('find', 'dapengniao')
-                    .then(function (r) {
-                        console.info(r);
-                    })
-                    .catch(function (e) {
-                        console.error(e);
-                    });
-}, 3000);
