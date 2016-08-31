@@ -16,7 +16,7 @@ module.exports = {
     /**
      * 配置加载
      */
-    config: function (path) {
+    config: function(path) {
         Config.load(path);
         Registry.init();
     },
@@ -24,12 +24,12 @@ module.exports = {
     /**
      * rpc调用, 主要调用入口
      */
-    getService: function (serviceName, version, group) {
+    getService: function(serviceName, version, group) {
         var invokerDesc = new InvokerDesc(serviceName, group, version),
             invoker = Registry.getInvoker(invokerDesc);
         if (!invoker) {
             invoker = new Invoker(invokerDesc);
-            Registry.register(invokerDesc, new InvokerProxy(invoker, invokerDesc));
+            Registry.register(invokerDesc, invoker);
         }
         return invoker;
     }
